@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🤖 Khadija - Assistant Virtuel Intelligent</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="chatbot-container">
+        <!-- En-tête avec avatar de Khadija -->
+        <div class="chat-header">
+            <img 
+                src="https://us.123rf.com/450wm/elvie15veronika/elvie15veronika2005/elvie15veronika200500047/147252381-social-media-avatar-profile-a-woman-african-woman-in-glasses-office-worker-vector-trendy-minimal.jpg" 
+                alt="Avatar de Khadija" 
+                class="avatar"
+            >
+            <div class="header-info">
+                <h1>Khadija</h1>
+                <p>Votre assistante virtuelle intelligente</p>
+            </div>
+            <div class="status-indicator" title="Khadija est en ligne"></div>
+        </div>
+        
+        <!-- Zone d'affichage des messages avec bulles -->
+        <div id="messages"></div>
+        
+        <!-- Zone de saisie -->
+        <div class="input-container">
+            <input 
+                type="text" 
+                id="userInput" 
+                placeholder="💬 Tapez votre message à Khadija..."
+                autocomplete="off"
+                maxlength="500"
+            >
+            <button class="send-button" onclick="sendMessage()">
+                ➤
+            </button>
+        </div>
+    </div>
+    
+    <script src="chat.js"></script>
+</body>
+</html>

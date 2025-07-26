@@ -1,0 +1,389 @@
+/* ===========================================
+   KHADIJA CHATBOT - STYLES CSS MODERNES
+   Workshop : Interface avec bulles de discussion
+   =========================================== */
+
+/* Reset et configuration de base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Facilite le calcul des dimensions */
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh; /* Prend toute la hauteur de l'écran */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+/* Container principal du chatbot */
+.chatbot-container {
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 600px; /* Limite la largeur sur grands écrans */
+    overflow: hidden; /* Cache les débordements */
+    animation: slideIn 0.5s ease-out; /* Animation d'apparition */
+}
+
+/* En-tête avec le nom de Khadija et son avatar */
+.chat-header {
+    background: linear-gradient(135deg, #ff6b6b, #ffa726);
+    color: white;
+    padding: 20px;
+    text-align: center;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+/* Avatar de Khadija dans l'en-tête */
+.chat-header .avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    object-fit: cover;
+    animation: float 3s ease-in-out infinite;
+}
+
+.header-info {
+    flex: 1;
+}
+
+.chat-header h1 {
+    font-size: 24px;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+.chat-header p {
+    opacity: 0.9;
+    font-size: 14px;
+}
+
+/* Indicateur de statut en ligne */
+.status-indicator {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 12px;
+    height: 12px;
+    background: #4caf50;
+    border-radius: 50%;
+    animation: pulse 2s infinite; /* Animation de pulsation */
+}
+
+/* Zone d'affichage des messages - Style bulle moderne */
+#messages {
+    height: 400px; /* Hauteur fixe pour le scroll */
+    padding: 20px;
+    overflow-y: auto; /* Scroll vertical si nécessaire */
+    background: linear-gradient(to bottom, #f8f9fa, #e9ecef);
+    border-bottom: 1px solid #dee2e6;
+    font-size: 14px;
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Espacement entre les messages */
+}
+
+/* Style pour les messages en général */
+.message {
+    display: flex;
+    align-items: flex-end;
+    gap: 10px;
+    margin-bottom: 15px;
+    animation: messageSlide 0.3s ease-out;
+}
+
+/* Messages de l'utilisateur - alignés à droite */
+.user-message {
+    justify-content: flex-end;
+    margin-left: 50px;
+}
+
+.user-message .message-bubble {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    border-radius: 20px 20px 5px 20px;
+    padding: 12px 16px;
+    max-width: 70%;
+    word-wrap: break-word;
+    position: relative;
+    box-shadow: 0 2px 10px rgba(102, 126, 234, 0.2);
+}
+
+/* Messages de Khadija - alignés à gauche */
+.bot-message {
+    justify-content: flex-start;
+    margin-right: 50px;
+}
+
+.bot-message .message-bubble {
+    background: white;
+    color: #333;
+    border-radius: 20px 20px 20px 5px;
+    padding: 12px 16px;
+    max-width: 70%;
+    word-wrap: break-word;
+    position: relative;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border: 2px solid #f0f0f0;
+}
+
+/* Avatar dans les messages */
+.message-avatar {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    object-fit: cover;
+}
+
+/* Avatar utilisateur (simple cercle coloré) */
+.user-avatar {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+/* Style personnalisé pour le scrollbar */
+#messages::-webkit-scrollbar {
+    width: 6px;
+}
+
+#messages::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 3px;
+}
+
+#messages::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    border-radius: 3px;
+}
+
+/* Zone de saisie utilisateur */
+.input-container {
+    display: flex;
+    padding: 20px;
+    background: white;
+    gap: 10px; /* Espacement entre les éléments */
+    border-top: 1px solid #f0f0f0;
+}
+
+#userInput {
+    flex: 1; /* Prend tout l'espace disponible */
+    padding: 15px 20px;
+    border: 2px solid #e9ecef;
+    border-radius: 25px;
+    font-size: 14px;
+    outline: none; /* Supprime le contour par défaut */
+    transition: all 0.3s ease; /* Animation fluide */
+    background: #f8f9fa;
+}
+
+/* État focus de l'input */
+#userInput:focus {
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    background: white;
+}
+
+/* Bouton d'envoi */
+.send-button {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+/* Effet hover sur le bouton */
+.send-button:hover {
+    transform: scale(1.05); /* Légère augmentation de taille */
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+}
+
+.send-button:active {
+    transform: scale(0.95); /* Effet de clic */
+}
+
+/* Indicateur de frappe */
+.typing-indicator {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 10px 15px;
+    background: #f0f0f0;
+    border-radius: 20px;
+    margin-left: 45px;
+    margin-bottom: 10px;
+    max-width: 80px;
+}
+
+.typing-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #999;
+    animation: typingDot 1.4s infinite ease-in-out;
+}
+
+.typing-dot:nth-child(1) { animation-delay: -0.32s; }
+.typing-dot:nth-child(2) { animation-delay: -0.16s; }
+
+/* Animations */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.7;
+        transform: scale(1.05);
+    }
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-5px);
+    }
+}
+
+@keyframes messageSlide {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes typingDot {
+    0%, 60%, 100% {
+        transform: scale(1);
+        opacity: 0.5;
+    }
+    30% {
+        transform: scale(1.2);
+        opacity: 1;
+    }
+}
+
+/* Responsive Design pour mobiles */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+    
+    .chatbot-container {
+        margin: 0;
+        height: 95vh; /* Utilise presque toute la hauteur sur mobile */
+        border-radius: 15px;
+    }
+    
+    .chat-header {
+        padding: 15px;
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .chat-header .avatar {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .chat-header h1 {
+        font-size: 20px;
+    }
+    
+    #messages {
+        height: calc(95vh - 180px); /* Ajuste la hauteur selon l'écran */
+        padding: 15px;
+        gap: 12px;
+    }
+    
+    .user-message {
+        margin-left: 20px;
+    }
+    
+    .bot-message {
+        margin-right: 20px;
+    }
+    
+    .message-bubble {
+        max-width: 85% !important;
+        font-size: 13px;
+    }
+    
+    .message-avatar {
+        width: 30px;
+        height: 30px;
+    }
+    
+    .input-container {
+        padding: 15px;
+    }
+    
+    #userInput {
+        font-size: 16px; /* Évite le zoom sur iOS */
+        padding: 12px 18px;
+    }
+    
+    .send-button {
+        width: 45px;
+        height: 45px;
+        font-size: 16px;
+    }
+}
+
+/* Style pour les messages système */
+.system-message {
+    text-align: center;
+    font-style: italic;
+    color: #666;
+    font-size: 12px;
+    margin: 10px 0;
+    padding: 8px;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 15px;
+    align-self: center;
+    max-width: 80%;
+}
